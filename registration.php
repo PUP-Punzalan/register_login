@@ -5,18 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Styles / CSS -->
-  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/> -->
-  <!-- <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script> -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
   <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./style.css">
-  <script src="./script.js" defer></script>
+  <script defer src="./script.js" ></script>
 
   <!-- Title -->
   <title>A3 | Register</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="container" onclick="erase()">
     <!-- PHP -->
     <?php
     if (isset($_POST["submit"])) {
@@ -77,73 +74,65 @@
         }
       }
     }
-
-
     ?>
 
     <!-- HTML -->
+    <div id="test"></div>
     <div class="form-container">
       <div class="title-container">
         <h2 class="fs-lg fw-bold">Registeration</h1>
         <h4 class="fs-sm fw-thin fc-03">Create an account to use full range of functions.</h4>
       </div>
-      <form action="registration.php" method="post">
+      <form id="form" action="registration.php" method="post">
         <div class="group">
           <label for="fullname">Name</label>
           <div class="form-group">
             <i class="fa-solid fa-user"></i>
-            <input type="text" name="fullname" placeholder="Enter name">
+            <input id="name" type="text" name="fullname" placeholder="Enter full name">
           </div>
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <div id="error">Error</div>
         </div>
         <div class="group">
           <label for="username">Username</label>
           <div class="form-group">
             <i class="fa-solid fa-user"></i>
-            <input type="text" name="username" placeholder="Enter username">
+            <input id="username" type="text" name="username" placeholder="Enter username">
           </div>
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <div id="error">Error</div>
         </div>
         <div class="group">
           <label for="email">Email</label>
           <div class="form-group">
             <i class="fa-solid fa-user"></i>
-            <input type="email" name="email" placeholder="Enter email">
+            <input id="email" type="email" name="email" placeholder="Enter email">
           </div>
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <div id="error">Error</div>
         </div>
         <div class="group">
           <label for="password">Password</label>
           <div class="form-group">
             <i class="fa-solid fa-user"></i>
-            <input type="password" name="password" placeholder="Enter password">
+            <input id="password" type="password" name="password" placeholder="Enter password">
           </div>
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <div id="error">Error</div>
         </div>
         <div class="group">
           <label for="passwordRepeat">Repeat Password</label>
           <div class="form-group">
             <i class="fa-solid fa-user"></i>
-            <input type="password" name="passwordRepeat" placeholder="Repeat password">
+            <input id="passwordRepeat" type="password" name="passwordRepeat" placeholder="Repeat password">
           </div>
-          <i class="fa-solid fa-circle-check"></i>
-          <i class="fa-solid fa-circle-exclamation"></i>
-          <div id="error">Error</div>
         </div>
         
-        <div class="form-group">
+        <div class="form-btn">
           <input type="submit" name="submit" value="Register">
         </div>
       </form>
     </div>
   </div>
+
+
+  <!-- <div class="sec-container">
+    <div class="hello">hello</div>
+    <div class="hello">hello</div>
+    <div class="hello">hello</div>
+    <div class="hello">hello</div>
+  </div> -->
 </body>
 </html>
