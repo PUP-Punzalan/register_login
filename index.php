@@ -23,7 +23,7 @@
     ?>
 
     <div class="dashboard">
-      <h1 class="fc-01">welcome</h1>
+      <h1 class="fc-01">Welcome Aboard!</h1>
       <div class="form-btn">
         <a href="logout.php">Logout</a>
       </div>
