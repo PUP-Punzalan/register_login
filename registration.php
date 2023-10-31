@@ -7,15 +7,20 @@
   <!-- Styles / CSS -->
   <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./style.css">
-  <script defer src="./script.js" ></script>
+  <script defer src="./registration.js" ></script>
 
   <!-- Title -->
   <title>A3 | Register</title>
 </head>
 <body>
-  <div class="container" id="container" onclick="erase()">
-    <!-- PHP -->
-    <?php
+  <!-- PHP -->
+  <?php
+    // Check if the user is already logged in
+    session_start();
+    if (isset($_SESSION["user"])) {
+      header("Location: index.php");
+    }
+
     if (isset($_POST["submit"])) {
       $fullname = $_POST["fullname"];
       $username = $_POST["username"];
@@ -38,9 +43,9 @@
 
       // Password lenght validator
       if (strlen($password) < 8) {
-        array_push($errors, "Your password is too short. Must be at least 8 characters long.");
+        array_push($errors, "Password must be 8 characters long.");
       } else if (strlen($password) > 16) {
-        array_push($errors, "Your password is too long. Maximum of 16 characters only.");
+        array_push($errors, "Password must be at most 16 characters long.");
       }
 
       // Repeat password validator
@@ -57,9 +62,13 @@
       }
 
       if (count($errors) > 0) {
+        echo "<div class='popup-messages'>";
+
         foreach ($errors as $error) {
-          echo "<div class='error-message fc-01'>$error</div>";
+          echo "<div class='popup error fc-01'>$error</div>";
         }
+
+        echo "</div>";
       } else {
         $sql = "INSERT INTO user_accounts(full_name, username, email, password) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
@@ -68,16 +77,16 @@
         if ($prepare) {
           mysqli_stmt_bind_param($stmt,"ssss", $fullname, $username, $email, $passwordEncrpyt);
           mysqli_stmt_execute($stmt);
-          echo"<div class='fc-01'>REGISTRATION SUCCESSFUL!</div>";
+          echo"<div class='popup-messages'><div class='popup success fc-01'>Registration successful. Please log in.</div></div>";
         } else {
           die("ERROR NOT SUCCESS");
         }
       }
     }
-    ?>
+  ?>
 
-    <!-- HTML -->
-    <div id="test"></div>
+  <!-- HTML -->
+  <div class="container" id="container" onclick="erase()">
     <div class="form-container">
       <div class="title-container">
         <h2 class="fs-lg fw-bold">Registeration</h1>
@@ -101,21 +110,21 @@
         <div class="group">
           <label for="email">Email</label>
           <div class="form-group">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-envelope"></i>
             <input id="email" type="email" name="email" placeholder="Enter email">
           </div>
         </div>
         <div class="group">
           <label for="password">Password</label>
           <div class="form-group">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-lock"></i>
             <input id="password" type="password" name="password" placeholder="Enter password">
           </div>
         </div>
         <div class="group">
           <label for="passwordRepeat">Repeat Password</label>
           <div class="form-group">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-lock"></i>
             <input id="passwordRepeat" type="password" name="passwordRepeat" placeholder="Repeat password">
           </div>
         </div>
@@ -124,15 +133,12 @@
           <input type="submit" name="submit" value="Register">
         </div>
       </form>
+
+      <!-- Button -->
+      <div class="adn-container">
+        <span class="adn">Already have an account? <a href="login.php" class="adn-btn">Login here</a></span>
+      </div>
     </div>
   </div>
-
-
-  <!-- <div class="sec-container">
-    <div class="hello">hello</div>
-    <div class="hello">hello</div>
-    <div class="hello">hello</div>
-    <div class="hello">hello</div>
-  </div> -->
 </body>
 </html>
