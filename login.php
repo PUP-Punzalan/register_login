@@ -21,7 +21,7 @@
       header("Location: index.php");
     }
 
-    if (isset($_POST["login"])) {
+    if (isset($_POST["submit"])) {
       $email = $_POST["email"];
       $password = $_POST["password"];
 
@@ -49,26 +49,34 @@
     <div class="form-container">
       <div class="title-container">
         <h2 class="fs-lg fw-bold">Login</h1>
-        <h4 class="fs-sm fw-thin fc-03">Login to the system</h4>
+        <h4 class="fs-sm fw-thin fc-03">Login to use full range of functions.</h4>
       </div>
-      <form id="form" action="login.php" method="post">
+      <form id="form" action="login.php" method="post" autocomplete="off">
+
+        <!-- Email -->
+        <p class="title">Email</p>
         <div class="group">
-          <label for="email">Email</label>
-          <div class="form-group">
-            <i class="fa-solid fa-envelope"></i>
-            <input id="email" type="email" name="email" placeholder="Enter email">
+          <div class="input-group input-flex">
+            <div class="input">
+              <input id="email" type="email" name="email" placeholder="Enter email">
+              <!-- <label for="email">Email</label> -->
+            </div>
           </div>
         </div>
+
+        <!-- Password -->
+        <p class="title">Password</p>
         <div class="group">
-          <label for="password">Password</label>
-          <div class="form-group">
-            <i class="fa-solid fa-lock"></i>
-            <input id="password" type="password" name="password" placeholder="Enter password">
+          <div class="input-group input-flex">
+            <div class="input">
+              <input id="password" type="password" name="password" placeholder="Enter password">
+              <!-- <label for="password">Password</label> -->
+            </div>
           </div>
         </div>
-        
-        <div class="form-btn">
-          <input type="submit" name="login" value="Login">
+
+        <div class="submit-button">
+          <input type="submit" name="submit" value="Login">
         </div>
       </form>
 
