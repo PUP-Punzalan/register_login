@@ -288,10 +288,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   justify-content: center;
 }
 
-.dashboard h1 {
-  margin-bottom: 2rem;
-}
-
 /* Responsiveness starts here */
 @media (max-width: 1100px) {
   .popup-messages {
@@ -307,6 +303,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     /* position: absolute; */
     border-radius: 0;
   }
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: var(--clr-light-text-01);
 }
 /* Responsiveness ends here */
 /* Error messages ends here */

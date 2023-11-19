@@ -29,10 +29,28 @@
       $sql = "SELECT * FROM user_accounts WHERE email = '$email'";
       $result = mysqli_query($conn, $sql);
       $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+      $statement = $conn->prepare($sql);
+      $statement->execute();
+      $data = $statement->get_result();
+
+      // $email_result = $conn->query($sql);
+      // $email_row = $email_result->fetch_assoc();
+
       if ($user) {
+        // while ($result_row = $result_02->fetch_assoc()) {
+        //   $_SESSION = $result_row['email'];
+        // }'
+
+
+        $_SESSION["result"] = $data->fetch_assoc()["email"];
         if (password_verify($password, $user["password"])) {
-          session_start();
+          // session_start();
           $_SESSION["user"] = "yes";
+          // $_SESSION["result"] = $result_02;
+
+
+          
           header("Location: index.php");
           die("");
         } else {
